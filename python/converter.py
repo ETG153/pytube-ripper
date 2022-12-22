@@ -1,7 +1,8 @@
 
 #from pydub import AudioSegment as segment
 import os
-import shutil
+#import shutil
+import moviepy.editor as me
 
 inputformat = "3gpp"
 outputformat = "mp3"
@@ -12,11 +13,13 @@ if not os.path.exists(outputdir):
     os.mkdir(outputdir)
 
 files = os.listdir(inputdir)
-gppfiles = [file for file in files if "."+inputformat in file]
-print("List of", inputformat, "files found in", inputdir, ":")
-print(gppfiles)
+inputfiles = [file for file in files if "."+inputformat in file]
 
-for file in gppfiles:
-    shutil.copy(inputdir+file, outputdir+file.replace(inputformat, outputformat))
-    #audio = segment.from_file(file=outputdir+file, format=inputformat)
-    #audio.export(outputdir+file.replace(inputformat, outputformat), format=outputformat)
+for file in inputfiles:
+    path = inputdir+file
+    print("Converting file", file)
+    audio = me.AudioFileClip(path)
+    audio.write_audiofile(outputdir+file.replace(inputformat, outputformat))
+    print("Conversion done; proceeding\n")
+
+print("Finished!")
