@@ -1,6 +1,6 @@
 from pytube import Playlist as pl
 
-listurl = "https://www.youtube.com/watch?v=qVFUjKA1JV4&list=PLCaq2Bdp3VhzTDR1hOTnh4_7X03ltSmfs"
+listurl = "https://www.youtube.com/playlist?list=PLd2hJYgWor6CK2MgmoDmtqfq9H4cTm9FN"
 outputdir = "./output/"
 minruntime = 120
 
